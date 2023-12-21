@@ -26,9 +26,6 @@ public class Movie {
     @Column(name = "movie_trailer")
     private String movieTrailer;
 
-    @Column(name = "movie_cens")
-    private String movieCens;
-
     @Column(name = "movie_genres")
     private String movieGenres;
 
@@ -36,7 +33,7 @@ public class Movie {
     @Temporal(TemporalType.DATE)
     private Date movieRelease;
 
-    @Column(name = "movie_lenght")
+    @Column(name = "movie_length")
     private String movieLength;
 
     @Column(name = "movie_format")
