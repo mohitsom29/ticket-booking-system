@@ -1,8 +1,6 @@
 package com.mohitsom.ticketbookingapi.service;
 
 import com.mohitsom.ticketbookingapi.entity.Movie;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 public interface MovieService {
