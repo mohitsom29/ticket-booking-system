@@ -26,9 +26,6 @@ public class Movie {
     @Column(name = "movie_trailer")
     private String movieTrailer;
 
-    @Column(name = "movie_cens")
-    private String movieCens;
-
     @Column(name = "movie_genres")
     private String movieGenres;
 
