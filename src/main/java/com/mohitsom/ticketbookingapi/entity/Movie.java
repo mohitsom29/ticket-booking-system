@@ -33,7 +33,7 @@ public class Movie {
     @Temporal(TemporalType.DATE)
     private Date movieRelease;
 
-    @Column(name = "movie_lenght")
+    @Column(name = "movie_length")
     private String movieLength;
 
     @Column(name = "movie_format")
