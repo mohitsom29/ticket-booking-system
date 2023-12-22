@@ -25,6 +25,28 @@ public class MovieController {
         return movieService.saveMovie(movie);
     }
 
+    @Operation(description = "Fetch Movie with his unique ID")
+    @GetMapping("/movie/{id}")
+    public Movie fetchMovieById(@PathVariable("id") Integer movieId)
+    {
+        return movieService.fetchMovieById(movieId);
+    }
+
+    @Operation(description = "Delete movie id with his particular unique ID")
+    @DeleteMapping("/movie/{id}")
+    public String deleteMovieById(@PathVariable("id") Integer movieId)
+    {
+        movieService.deleteMovieById(movieId);
+        return "Department Deleted Successfully";
+    }
+
+    @Operation(description = "Update the movie in the database using particular unique ID")
+    @PutMapping("/movie/{id}")
+    public Movie updateMovie(@PathVariable("id") Integer movieId, @RequestBody Movie movie)
+    {
+        return movieService.updateMovie(movieId,movie);
+    }
+
     @Operation(description = "Get the list of movies")
     @GetMapping("")
     public ResponseEntity<?> getAllMovies() {
