@@ -1,7 +1,10 @@
 package com.mohitsom.ticketbookingapi.service;
 
 import com.mohitsom.ticketbookingapi.entity.Movie;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 import java.util.List;
 
 public interface MovieService {
