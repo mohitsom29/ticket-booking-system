@@ -29,6 +29,9 @@ public class Movie {
     @Column(name = "movie_genres")
     private String movieGenres;
 
+    @Column(name = "movie_director")
+    private String movieDirector;
+
     @Column(name = "movie_release")
     @Temporal(TemporalType.DATE)
     private Date movieRelease;

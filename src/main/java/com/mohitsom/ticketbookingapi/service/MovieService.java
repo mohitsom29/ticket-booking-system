@@ -15,4 +15,6 @@ public interface MovieService {
     void deleteMovieById(Integer movieId);
 
     Movie updateMovie(Integer movieId, Movie movie);
+
+    public List<Movie> getAllMoviesByDirector(String movieDirector);
 }

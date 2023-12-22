@@ -89,4 +89,9 @@ public class MovieServiceImpl implements MovieService {
         }
         return movieRepository.save(movieDB);
     }
+
+    @Override
+    public List<Movie> getAllMoviesByDirector(String movieDirector) {
+        return movieRepository.getAllMoviesByDirector(movieDirector);
+    }
 }

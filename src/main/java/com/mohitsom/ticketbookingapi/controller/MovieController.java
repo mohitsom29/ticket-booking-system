@@ -64,4 +64,10 @@ public class MovieController {
     public ResponseEntity<?> getMoviesFuture() {
         return ResponseEntity.ok(movieService.getMoviesFuture());
     }
+
+    @Operation(description = "Get the list of movies by there director name")
+    @GetMapping("/{director}")
+    public ResponseEntity<?> getAllMoviesByDirector(@PathVariable("director") String movieDirector) {
+        return ResponseEntity.ok(movieService.getAllMoviesByDirector(movieDirector));
+    }
 }
