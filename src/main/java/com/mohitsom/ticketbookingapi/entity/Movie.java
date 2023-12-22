@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -44,4 +46,7 @@ public class Movie {
 
     @Column(name = "movie_poster")
     private String moviePoster;
+
+    @ManyToMany(mappedBy = "movies")
+    private Set<Cinema> cinemas = new HashSet<>();
 }
