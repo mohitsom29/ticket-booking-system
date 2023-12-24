@@ -1,6 +1,8 @@
 package com.mohitsom.ticketbookingapi.service;
 
 import com.mohitsom.ticketbookingapi.entity.Movie;
+import com.mohitsom.ticketbookingapi.request.MovieRequest;
+
 import java.util.List;
 
 public interface MovieService {
@@ -17,4 +19,6 @@ public interface MovieService {
     Movie updateMovie(Integer movieId, Movie movie);
 
     public List<Movie> getAllMoviesByDirector(String movieDirector);
+
+    Movie saveMovieWithCinemas(MovieRequest movieRequest, Integer movieId);
 }

@@ -22,7 +22,6 @@ public class Cinema {
     private String cinemaName;
     @Column(name = "cinema_address")
     private String cinemaAddress;
-    @Column(name = "cinema_movies")
     @ManyToMany(
             cascade = CascadeType.ALL
     )
@@ -32,5 +31,4 @@ public class Cinema {
             inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private Set<Movie> movies = new HashSet<>();
-
 }

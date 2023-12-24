@@ -1,6 +1,7 @@
 package com.mohitsom.ticketbookingapi.controller;
 
 import com.mohitsom.ticketbookingapi.entity.Movie;
+import com.mohitsom.ticketbookingapi.request.MovieRequest;
 import com.mohitsom.ticketbookingapi.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -69,5 +70,11 @@ public class MovieController {
     @GetMapping("/{director}")
     public ResponseEntity<?> getAllMoviesByDirector(@PathVariable("director") String movieDirector) {
         return ResponseEntity.ok(movieService.getAllMoviesByDirector(movieDirector));
+    }
+
+    @PostMapping("/movieCinema/{movieId}")
+    public Movie saveMovieWithCinemas(@PathVariable("movieId") Integer movieId, MovieRequest movieRequest)
+    {
+        return movieService.saveMovieWithCinemas(movieRequest,movieId);
     }
 }

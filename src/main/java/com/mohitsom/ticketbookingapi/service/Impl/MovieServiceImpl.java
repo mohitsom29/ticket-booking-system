@@ -1,20 +1,28 @@
 package com.mohitsom.ticketbookingapi.service.Impl;
 
+import com.mohitsom.ticketbookingapi.entity.Cinema;
 import com.mohitsom.ticketbookingapi.entity.Movie;
+import com.mohitsom.ticketbookingapi.repository.CinemaRepository;
 import com.mohitsom.ticketbookingapi.repository.MovieRepository;
+import com.mohitsom.ticketbookingapi.request.MovieRequest;
 import com.mohitsom.ticketbookingapi.service.MovieService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class MovieServiceImpl implements MovieService {
     @Autowired
     private MovieRepository movieRepository;
+    @Autowired
+    private CinemaRepository cinemaRepository;
 
     public List<Movie> getAllMovies(){
         return movieRepository.findAll();
@@ -93,5 +101,22 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> getAllMoviesByDirector(String movieDirector) {
         return movieRepository.getAllMoviesByDirector(movieDirector);
+    }
+
+    @Override
+    public Movie saveMovieWithCinemas(MovieRequest movieRequest, Integer movieId) {
+        Movie movie = movieRepository.findById(movieId).get();
+        Set<Integer> cinemasId = movieRequest.getCinemas();
+        for(Integer id : cinemasId)
+        {
+            Optional<Cinema> OptionalCinema = cinemaRepository.findById(id);
+            if(OptionalCinema.isPresent())
+            {
+                Cinema cinema = OptionalCinema.get();
+                movie.getCinemas().add(cinema);
+            }
+            else throw new EntityNotFoundException("No cinema is present with the Id in the database: " + id);
+        }
+        return movie;
     }
 }
