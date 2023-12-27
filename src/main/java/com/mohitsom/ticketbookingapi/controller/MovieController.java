@@ -71,10 +71,4 @@ public class MovieController {
     public ResponseEntity<?> getAllMoviesByDirector(@PathVariable("director") String movieDirector) {
         return ResponseEntity.ok(movieService.getAllMoviesByDirector(movieDirector));
     }
-
-    @PostMapping("/movieCinema/{movieId}")
-    public Movie saveMovieWithCinemas(@PathVariable("movieId") Integer movieId, MovieRequest movieRequest)
-    {
-        return movieService.saveMovieWithCinemas(movieRequest,movieId);
-    }
 }

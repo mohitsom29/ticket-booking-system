@@ -102,20 +102,4 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getAllMoviesByDirector(String movieDirector) {
         return movieRepository.getAllMoviesByDirector(movieDirector);
     }
-
-    @Override
-    public Movie saveMovieWithCinemas(MovieRequest movieRequest, Integer movieId) {
-        Movie movie = movieRepository.findById(movieId).get();
-        Set<Integer> cinemasId = movieRequest.getCinemas();
-        for(Integer id : cinemasId) {
-            Optional<Cinema> OptionalCinema = cinemaRepository.findById(id);
-            if (OptionalCinema.isPresent()) {
-                Cinema cinema = OptionalCinema.get();
-                movie.getCinemas().add(cinema);
-                //System.out.println(movie);
-            } else throw new EntityNotFoundException("No cinema is present with the Id in the database: " + id);
-        }
-        movieRepository.save(movie);
-        return movie;
-    }
 }

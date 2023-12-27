@@ -11,6 +11,5 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieRequest {
-    private String movieName;
     Set<Integer> cinemas = new HashSet<>();
 }

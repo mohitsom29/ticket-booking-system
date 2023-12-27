@@ -19,6 +19,4 @@ public interface MovieService {
     Movie updateMovie(Integer movieId, Movie movie);
 
     public List<Movie> getAllMoviesByDirector(String movieDirector);
-
-    Movie saveMovieWithCinemas(MovieRequest movieRequest, Integer movieId);
 }
