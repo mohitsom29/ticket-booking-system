@@ -1,5 +1,6 @@
 package com.mohitsom.ticketbookingapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +24,9 @@ public class Cinema {
     @Column(name = "cinema_address")
     private String cinemaAddress;
     @ManyToMany(
+            mappedBy = "cinemas",
             cascade = CascadeType.ALL
     )
-    @JoinTable(
-            name = "cinema_movie",
-            joinColumns = @JoinColumn(name = "cinemaId", referencedColumnName = "cinema_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id")
-    )
+    @JsonIgnore
     private Set<Movie> movies = new HashSet<>();
 }

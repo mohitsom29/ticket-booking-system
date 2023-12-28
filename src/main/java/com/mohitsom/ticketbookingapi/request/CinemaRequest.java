@@ -10,7 +10,5 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CinemaRequest {
-    private String cinemaName;
-    private String cinemaAddress;
-    private Set<Integer> movieId;
+    private Set<Integer> movies;
 }

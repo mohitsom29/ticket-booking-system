@@ -71,4 +71,10 @@ public class MovieController {
     public ResponseEntity<?> getAllMoviesByDirector(@PathVariable("director") String movieDirector) {
         return ResponseEntity.ok(movieService.getAllMoviesByDirector(movieDirector));
     }
+
+    @PutMapping("/{movieId}/cinema/{cinemaId}")
+    public Movie assignCinemaToMovie(@PathVariable("movieId") Integer movieId, @PathVariable("cinemaId") Integer cinemaId)
+    {
+        return movieService.assignCinemaToMovie(movieId,cinemaId);
+    }
 }

@@ -19,4 +19,6 @@ public interface MovieService {
     Movie updateMovie(Integer movieId, Movie movie);
 
     public List<Movie> getAllMoviesByDirector(String movieDirector);
+
+    Movie assignCinemaToMovie(Integer movieId, Integer cinemaId);
 }

@@ -7,7 +7,7 @@ import com.mohitsom.ticketbookingapi.request.MovieRequest;
 import java.util.List;
 
 public interface CinemaService {
-    public Cinema createCinemaWithMovies(CinemaRequest cinemaRequest);
+    public Cinema createCinema(Cinema cinema);
 
     List<Cinema> getCinemas();
 }

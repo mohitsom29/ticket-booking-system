@@ -16,13 +16,14 @@ public class CinemaController {
     private CinemaService cinemaService;
 
     @PostMapping("/cinema")
-    public Cinema createCinemaWithMovies(@RequestBody CinemaRequest cinemaRequest)
+    public Cinema createCinema(@RequestBody Cinema cinema)
     {
-        return cinemaService.createCinemaWithMovies(cinemaRequest);
+        return cinemaService.createCinema(cinema);
     }
 
     @GetMapping()
     public List<Cinema> getCinemas() {
         return cinemaService.getCinemas();
     }
+
 }

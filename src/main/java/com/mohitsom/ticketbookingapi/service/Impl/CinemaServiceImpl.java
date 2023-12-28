@@ -11,6 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -22,21 +23,7 @@ public class CinemaServiceImpl implements CinemaService {
     @Autowired
     private MovieRepository movieRepository;
     @Override
-    public Cinema createCinemaWithMovies(CinemaRequest cinemaRequest) {
-          Cinema cinema = new Cinema();
-          cinema.setCinemaName(cinemaRequest.getCinemaName());
-          cinema.setCinemaAddress(cinemaRequest.getCinemaAddress());
-          Set<Integer> moviesId = cinemaRequest.getMovieId();
-          for(Integer id : moviesId)
-          {
-               Optional<Movie> OptionalMovie = movieRepository.findById(id);
-               if(OptionalMovie.isPresent())
-               {
-                   Movie movie = OptionalMovie.get();
-                   cinema.getMovies().add(movie);
-               }
-               else throw new EntityNotFoundException("No movie is present with the Id in the database: " + id);
-          }
+    public Cinema createCinema(Cinema cinema) {
           cinemaRepository.save(cinema);
           return cinema;
     }
@@ -45,5 +32,4 @@ public class CinemaServiceImpl implements CinemaService {
     public List<Cinema> getCinemas() {
         return cinemaRepository.findAll();
     }
-
 }

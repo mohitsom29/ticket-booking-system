@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -101,5 +98,16 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<Movie> getAllMoviesByDirector(String movieDirector) {
         return movieRepository.getAllMoviesByDirector(movieDirector);
+    }
+
+    @Override
+    public Movie assignCinemaToMovie(Integer movieId, Integer cinemaId) {
+        Movie movie = movieRepository.findById(movieId).get();
+        Cinema cinema = cinemaRepository.findById(cinemaId).get();
+        Set<Cinema> cinemas;
+        cinemas = movie.getCinemas();
+        cinemas.add(cinema);
+        movie.setCinemas(cinemas);
+        return movieRepository.save(movie);
     }
 }
